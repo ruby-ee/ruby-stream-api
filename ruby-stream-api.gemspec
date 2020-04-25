@@ -1,8 +1,8 @@
-require_relative 'lib/version.rb'
+require_relative 'lib/streamapi.rb'
 
 Gem::Specification.new do |spec|
   spec.name          = "ruby-stream-api"
-  spec.version       = Stream::VERSION
+  spec.version       = StreamApi::VERSION
   spec.authors       = ["amihaiemil"]
   spec.email         = ["amihaiemil@gmail.com"]
 
