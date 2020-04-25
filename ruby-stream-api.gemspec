@@ -1,4 +1,4 @@
-require_relative 'lib/stream/version.rb'
+require_relative 'lib/version.rb'
 
 Gem::Specification.new do |spec|
   spec.name          = "ruby-stream-api"
