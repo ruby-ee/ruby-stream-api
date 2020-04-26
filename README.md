@@ -11,4 +11,6 @@ More info soon.
 
 If you would like to contribute, just open an Issue (bugs, feature requests, any improvement idea) or a PR.
 
-In order to build the project, you need Bundler and Ruby >= 2.3.0. Make sure the build passes: ``$bundle exec rake``
+In order to build the project, you need Bundler and Ruby >= 2.3.0.
+
+Make sure the build passes: ``$bundle exec rake``
