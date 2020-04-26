@@ -29,10 +29,8 @@ class FromArray
     @array = array
   end
 
-  # This method will perform all the intermediary operations,
-  # then collect the resulting data into an array and return it.
+  # Collect the stream's data into an array and return it.
   def collect
-    collected = @array.dup
-    collected
+    @array.dup
   end
 end
