@@ -22,19 +22,21 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# A Stream.
-# Author:: Mihai Andronache (amihaiemil@gmail.com)
-class Stream
-  # Build a stream from a List.
-  def self.from_array(array)
-    return FromArray.new(array)
-  end
-
-  # A stream implemented based on an Array.
+module StreamApi
+  # A Stream.
   # Author:: Mihai Andronache (amihaiemil@gmail.com)
-  class FromArray
-    def initialize(array)
-      @array = array
+  class Stream
+    # Build a stream from an array.
+    def self.from_array(array)
+      return FromArray.new(array)
     end
-  end
+
+    # A stream implemented based on an Array.
+    # Author:: Mihai Andronache (amihaiemil@gmail.com)
+    class FromArray
+      def initialize(array)
+        @array = array
+      end
+    end
+end
 end

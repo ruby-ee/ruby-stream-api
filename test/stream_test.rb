@@ -27,8 +27,8 @@ require 'stream.rb'
 module ApiTest
   class StreamTest < Minitest::Test
     def test_that_from_array_works
-      refute_nil Stream.from_array([1, 2, 3])
-      refute_nil Stream::FromArray.new([1, 2, 3])
+      refute_nil StreamApi::Stream.from_array([1, 2, 3])
+      refute_nil StreamApi::Stream::FromArray.new([1, 2, 3])
     end
   end
 end
