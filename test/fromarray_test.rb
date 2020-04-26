@@ -39,8 +39,8 @@ class FromArrayTest < Minitest::Test
   def test_collects_no_modifications
     seed = [1, 2, 3]
     stream = FromArray.new(seed)
-    assert_equal(
-      seed, stream.collect,
+    assert(
+      seed == stream.collect,
       'The seed and collected array should be the equal!'
     )
     assert(
