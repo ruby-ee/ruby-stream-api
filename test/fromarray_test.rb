@@ -21,18 +21,30 @@
 # CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+require 'test_helper'
+require 'fromarray.rb'
 
-# A stream implemented based on an Array.
-# Author:: Mihai Andronache (amihaiemil@gmail.com)
-class FromArray
-  def initialize(array)
-    @array = array
+# Unit tests for class FromArray
+class FromArrayTest < Minitest::Test
+
+  # FromArray can be instantiated with an array.
+  def test_instantiates
+    refute_nil FromArray.new([1, 2, 3])
+    refute_nil FromArray.new(['1', '2', '3'])
   end
 
-  # This method will perform all the intermediary operations,
-  # then collect the resulting data into an array and return it.
-  def collect
-    collected = @array.dup
-    collected
+  # FromArray can collect its values into a new array.
+  def test_collects
+    seed = [1, 2, 3]
+    stream = FromArray.new(seed)
+    assert_equal(
+      seed, stream.collect,
+      'The seed and collected array should be the equal!'
+    )
+    assert(
+      !seed.equal?(stream.collect),
+      'The seed and collected array should not be the same!'
+    )
   end
+
 end
