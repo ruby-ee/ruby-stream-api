@@ -4,5 +4,8 @@ cache: bundler
 rvm:
   - 2.7.0
 before_install: gem install bundler -v 2.1.4
+branches:
+  only:
+    - master
 script:
   - bundler exec rake
