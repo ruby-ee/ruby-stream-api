@@ -34,7 +34,9 @@ class FromArrayTest < Minitest::Test
   end
 
   # FromArray can collect its values into a new array.
-  def test_collects
+  # The arrays should be equal since there was is no
+  # intermediary operation performed.
+  def test_collects_no_modifications
     seed = [1, 2, 3]
     stream = FromArray.new(seed)
     assert_equal(
