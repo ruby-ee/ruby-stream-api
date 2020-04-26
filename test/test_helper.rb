@@ -1,4 +1,4 @@
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
-require "streamapi.rb"
+require "stream.rb"
 
 require "minitest/autorun"

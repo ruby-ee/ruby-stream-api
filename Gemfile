@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in stream-stream-api.gemspec
+# Specify your gem's dependencies in ruby-stream-api.gemspec
 gemspec
 
 gem "rake", "~> 12.3.3"

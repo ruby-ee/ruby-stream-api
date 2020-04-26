@@ -1,21 +1,21 @@
-require_relative 'lib/streamapi.rb'
+require_relative 'lib/stream.rb'
 
 Gem::Specification.new do |spec|
   spec.name          = "ruby-stream-api"
-  spec.version       = StreamApi::VERSION
+  spec.version       = Stream::VERSION
   spec.authors       = ["amihaiemil"]
   spec.email         = ["amihaiemil@gmail.com"]
 
   spec.summary       = "Ruby Stream API"
   spec.description   = "Stream API for Ruby, inspired by Java 8's Stream API"
-  spec.homepage      = "https://github.com/stream-ee/stream-stream-api"
+  spec.homepage      = "https://github.com/ruby-ee/ruby-stream-api"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/stream-ee/stream-stream-api"
-  spec.metadata["changelog_uri"] = "https://github.com/stream-ee/stream-stream-api"
+  spec.metadata["source_code_uri"] = "https://github.com/ruby-ee/ruby-stream-api"
+  spec.metadata["changelog_uri"] = "https://github.com/ruby-ee/ruby-stream-api"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
