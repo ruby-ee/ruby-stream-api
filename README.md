@@ -6,3 +6,11 @@
 [![We recommend RubyMine](https://www.elegantobjects.org/rubymine.svg)](https://www.jetbrains.com/ruby/)
 
 Ruby Stream API
+
+More info soon.
+
+# Contribute
+
+If you would like to contribute, just open an Issue (bugs, feature requests, any improvement idea) or a PR.
+
+Make sure the build passes: ``$bundle exec rake``
