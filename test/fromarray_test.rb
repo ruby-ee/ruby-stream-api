@@ -34,7 +34,7 @@ class FromArrayTest < Minitest::Test
   end
 
   # FromArray can collect its values into a new array.
-  # The arrays should be equal since there was is no
+  # The arrays should be equal since there is no
   # intermediary operation performed.
   def test_collects_no_modifications
     seed = [1, 2, 3]
