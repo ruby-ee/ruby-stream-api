@@ -36,7 +36,25 @@ module Stream
       @array.length
     end
 
+    # Filter out the elements which are not satisfying the given condition.
+    # Example:
+    #
+    # stream = Stream::FromArray.new([1, 2, 3, 4, 5])
+    # collected = stream.filter {|num| num % 2 == 0}.collect
+    # puts collected # [2, 4]
+    #
+    # +condition+:: Ruby Block taking one parameter (the stream element) and
+    #               returning a boolean check on it.
+    def filter(&condition)
+      filtered = []
+      @array.each do |val|
+        filtered.push(val) unless condition.call(val) == false
+      end
+      FromArray.new(filtered)
+    end
+
     # Skip the first n elements of the stream.
+    # +count+:: Number of elements to skip from the beginning of the stream.
     def skip(count)
       raise ArgumentError, 'count has to be positive' unless count.positive?
 

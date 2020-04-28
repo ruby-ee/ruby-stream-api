@@ -123,5 +123,38 @@ module Stream
         'Expected ' + [].to_s + ' but got ' + collected.to_s
       )
     end
+
+    # FromArray can filter out elements which are not satisfying the
+    # condition.
+    def test_filter_elements
+      stream = FromArray.new([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+      collected = stream.filter {|num| num % 2 == 0}.collect
+      collected.each do |val|
+        assert(val.even?)
+      end
+    end
+
+    # FromArray filters out no elements because all of them are satisfying
+    # the condition.
+    def test_filters_no_elements
+      stream = FromArray.new([2, 4, 6, 8])
+      collected = stream.filter {|num| num % 2 == 0}.collect
+      assert(stream.collect == collected)
+    end
+
+    # FromArray filters out all elements because none of are satisfying
+    # the condition.
+    def test_filters_all_elements
+      stream = FromArray.new([2, 4, 6, 8])
+      assert(stream.filter {|num| num % 2 != 0}.count == 0)
+    end
+
+    # Filtering a stream should return a new instance rather than modifying
+    # the current one.
+    def test_filter_returns_new_instance
+      stream = FromArray.new([2, 4, 6, 8])
+      assert(!stream.filter(&:odd?).equal?(stream))
+      assert(stream.collect == [2, 4, 6, 8])
+    end
   end
 end
