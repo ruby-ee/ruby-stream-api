@@ -35,6 +35,6 @@ module Stream
 
   # Build a stream from an array.
   def self.from_array(array)
-    return FromArray.new(array)
+    FromArray.new(array)
   end
 end

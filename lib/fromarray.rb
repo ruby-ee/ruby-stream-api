@@ -22,27 +22,29 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# A stream implemented based on an Array.
-# Author:: Mihai Andronache (amihaiemil@gmail.com)
-class FromArray
-  def initialize(array)
-    @array = array
-  end
-
-  # Skip the first n elements of the stream.
-  def skip(count)
-    raise ArgumentError, 'count has to be positive' unless count.positive?
-
-    skipped = [];
-    @array.each_with_index do |val, index|
-      skipped.push(val) unless index + 1 <= count
+module Stream
+  # A stream implemented based on an Array.
+  # Author:: Mihai Andronache (amihaiemil@gmail.com)
+  class FromArray
+    def initialize(array)
+      @array = array
     end
-    @array = skipped
-    self
-  end
 
-  # Collect the stream's data into an array and return it.
-  def collect
-    @array.dup
+    # Skip the first n elements of the stream.
+    def skip(count)
+      raise ArgumentError, 'count has to be positive' unless count.positive?
+
+      skipped = [];
+      @array.each_with_index do |val, index|
+        skipped.push(val) unless index + 1 <= count
+      end
+      @array = skipped
+      self
+    end
+
+    # Collect the stream's data into an array and return it.
+    def collect
+      @array.dup
+    end
   end
 end
