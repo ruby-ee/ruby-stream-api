@@ -63,6 +63,15 @@ class FromArrayTest < Minitest::Test
     end
   end
 
+  # FromArray returns self after skipping some elements.
+  def test_skip_returns_self
+    stream = FromArray.new([1, 2, 3])
+    assert(
+      stream.skip(1).equal?(stream),
+      'Method skip should return the modified stream'
+    )
+  end
+
   # FromArray can skip the first element.
   def test_skip_first_element
     stream = FromArray.new([1, 2, 3])
@@ -78,7 +87,7 @@ class FromArrayTest < Minitest::Test
     stream = FromArray.new([1, 2, 3])
     collected = stream.skip(2).collect
     assert(
-       collected == [3],
+      collected == [3],
       'Expected ' + [3].to_s + ' but got ' + collected.to_s
     )
   end
