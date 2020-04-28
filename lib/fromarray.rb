@@ -29,6 +29,18 @@ class FromArray
     @array = array
   end
 
+  # Skip the first n elements of the stream.
+  def skip(count)
+    raise ArgumentError, 'count has to be positive' unless count.positive?
+
+    skipped = [];
+    @array.each_with_index do |val, index|
+      skipped.push(val) unless index + 1 <= count
+    end
+    @array = skipped
+    self
+  end
+
   # Collect the stream's data into an array and return it.
   def collect
     @array.dup
