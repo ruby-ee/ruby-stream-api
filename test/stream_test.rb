@@ -22,15 +22,10 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 require 'test_helper'
+require 'stream.rb'
 
 module Stream
   class StreamTest < Minitest::Test
-
-    # The Stream module has a version
-    def test_that_it_has_a_version_number
-      refute_nil Stream::VERSION
-    end
-
     # The Stream module can be created from an array
     def test_that_from_array_works
       refute_nil Stream.from_array([1, 2, 3])

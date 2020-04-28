@@ -22,18 +22,6 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-require 'fromarray.rb'
-
-# Ruby Stream API main module.
-# Author:: Mihai Andronache (amihaiemil@gmail.com)
 module Stream
-
-  # If it breaks, go to stderr
-  class Error < StandardError
-  end
-
-  # Build a stream from an array.
-  def self.from_array(array)
-    FromArray.new(array)
-  end
+  VERSION = '0.1.0'.freeze
 end

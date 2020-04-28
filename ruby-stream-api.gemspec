@@ -1,10 +1,4 @@
-require 'simplecov'
-SimpleCov.start do
-  add_filter 'test'
-  add_filter 'Rakefile'
-end
-
-require_relative 'lib/stream.rb'
+require_relative 'lib/version.rb'
 
 Gem::Specification.new do |spec|
   spec.name          = "ruby-stream-api"
