@@ -23,7 +23,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 require 'test_helper'
 
-module StreamTest
+module Stream
   class StreamTest < Minitest::Test
 
     # The Stream module has a version
