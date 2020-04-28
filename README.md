@@ -5,7 +5,24 @@
 [![DevOps By Rultor.com](http://www.rultor.com/b/ruby-ee/ruby-stream-api)](http://www.rultor.com/p/ruby-ee/ruby-stream-api)
 [![We recommend RubyMine](https://amihaiemil.com/images/rubymine-recommend.svg)](https://www.jetbrains.com/ruby/)
 
-More info soon.
+A Stream is a wrapper over a collection of elements offering a number of useful
+operations to modify and/or get information about the collection. The operations are chainable and can be categorized as follows:
+
+* **Source** operations -- these are the operations which are generating the Stream.
+* **Intermediate** operations (skip, filter, map etc) -- operations which are altering the Stream and still leave it open for further modifications.
+* **Terminal** operations (count, collect etc) -- operations which are executed after all the modifications have been done and are returning a finite result.
+
+First glance:
+
+```ruby
+array = [1, 2, 2, 2, 3, 3, 4, 5]
+stream = Stream::FromArray(array)
+collected = stream
+    .distinct()
+    .skip(2)
+    .collect
+puts collected # [3, 4, 5]
+```
 
 # Contribute
 
