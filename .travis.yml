@@ -8,4 +8,5 @@ branches:
   only:
     - master
 script:
+  - bundle install
   - bundler exec rake
