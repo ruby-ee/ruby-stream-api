@@ -68,8 +68,8 @@ module Stream
     def test_skip_returns_self
       stream = FromArray.new([1, 2, 3])
       assert(
-        stream.skip(1).equal?(stream),
-        'Method skip should return the modified stream'
+        !stream.skip(1).equal?(stream),
+        'Method skip should return a new instance of the modified stream'
       )
     end
 

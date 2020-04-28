@@ -24,6 +24,7 @@
 
 module Stream
   # A stream implemented based on an Array.
+  # This class is immutable and thread-safe.
   # Author:: Mihai Andronache (amihaiemil@gmail.com)
   class FromArray
     def initialize(array)
@@ -38,8 +39,7 @@ module Stream
       @array.each_with_index do |val, index|
         skipped.push(val) unless index + 1 <= count
       end
-      @array = skipped
-      self
+      FromArray.new(skipped)
     end
 
     # Collect the stream's data into an array and return it.
