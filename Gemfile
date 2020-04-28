@@ -5,3 +5,4 @@ gemspec
 
 gem "rake", "~> 12.3.3"
 gem "minitest", "~> 5.0"
+gem 'simplecov', require: false, group: :test

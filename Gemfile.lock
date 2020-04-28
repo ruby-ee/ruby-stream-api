@@ -6,8 +6,15 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    docile (1.3.2)
     minitest (5.14.0)
     rake (12.3.3)
+    simplecov (0.18.5)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+    simplecov-gem-adapter (1.0.1)
+      simplecov
+    simplecov-html (0.12.2)
 
 PLATFORMS
   ruby
@@ -16,6 +23,8 @@ DEPENDENCIES
   minitest (~> 5.0)
   rake (~> 12.3.3)
   ruby-stream-api!
+  simplecov
+  simplecov-gem-adapter
 
 BUNDLED WITH
    2.1.4
