@@ -12,7 +12,7 @@ operations to modify and/or get information about the collection. The operations
 * **Intermediate** operations (skip, filter, map etc) -- operations which are altering the Stream and still leave it open for further modifications.
 * **Terminal** operations (count, collect etc) -- operations which are executed after all the modifications have been done and are returning a finite result.
 
-First glance:
+First glance (finite Stream from an array):
 
 ```ruby
 array = [1, 2, 2, 2, 3, 3, 4, 5]
@@ -23,6 +23,8 @@ collected = stream
     .collect
 puts collected # [3, 4, 5]
 ```
+
+More info and examples soon.
 
 # Contribute
 
