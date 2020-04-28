@@ -1,3 +1,9 @@
+require 'simplecov'
+SimpleCov.start do
+  add_filter 'test'
+  add_filter 'Rakefile'
+end
+
 require_relative 'lib/stream.rb'
 
 Gem::Specification.new do |spec|
