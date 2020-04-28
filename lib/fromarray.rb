@@ -31,11 +31,16 @@ module Stream
       @array = array
     end
 
+    # Return the number of elements in this stream.
+    def count
+      @array.length
+    end
+
     # Skip the first n elements of the stream.
     def skip(count)
       raise ArgumentError, 'count has to be positive' unless count.positive?
 
-      skipped = [];
+      skipped = []
       @array.each_with_index do |val, index|
         skipped.push(val) unless index + 1 <= count
       end

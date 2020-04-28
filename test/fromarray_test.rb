@@ -34,6 +34,16 @@ module Stream
       refute_nil FromArray.new(['1', '2', '3'])
     end
 
+    # FromArray can return its count
+    def test_returns_count
+      assert(
+        FromArray.new([1, 2, 3]).count == 3
+      )
+      assert(
+        FromArray.new([]).count.zero?
+      )
+    end
+
     # FromArray can collect its values into a new array.
     # The arrays should be equal since there is no
     # intermediary operation performed.
