@@ -29,6 +29,7 @@ gem push *.gem --config-file /home/r/rubygems.yml
 
 # set next dev version in version.rb
 sed -i "s/'${tag}'.freeze # rultor/'${NEXT_VERSION}'.freeze # rultor/" ./lib/version.rb
+bundle install
 
 git commit -am "${NEXT_VERSION}"
 git checkout master
