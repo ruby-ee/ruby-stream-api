@@ -40,15 +40,8 @@ module Stream
   # Generate a Stream based on a seed function.
   # Since this would be an infinite Stream, a limit has to be applied.
   # If no limit is specified, the default is 100 elements.
-  def self.generate(&seed)
-    Stream.generate(100, &seed)
-  end
-
-  # Generate a Stream based on a seed function.
-  # Since this would be an infinite Stream, a limit has to be applied.
-  # If no limit is specified, the default is 100 elements.
-  def self.generate(limit, &seed)
-    raise ArgumentError, 'limit has to be positive' unless count.positive?
+  def self.generate(limit = 100, &seed)
+    raise ArgumentError, 'limit has to be positive' unless limit.positive?
 
     elements = []
     limit.times do
