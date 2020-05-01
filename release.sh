@@ -20,9 +20,15 @@ echo "NEXT VERSION IS"
 echo $NEXT_VERSION
 
 ### Actual Script Here
-
-#set the release version in version.rb
+rm -rf *.gem
+sed -i "s/'${CURRENT_VERSION}'.freeze # rultor/'${tag}'.freeze # rultor/" ./lib/version.rb
+gem build ruby-stream-api.gemspec
+chmod 0600 /home/r/rubygems.yml
+gem push *.gem --config-file /home/r/rubygems.yml
 ###
+
+# set next dev version in version.rb
+sed -i "s/'${tag}'.freeze # rultor/'${NEXT_VERSION}'.freeze # rultor/" ./lib/version.rb
 
 git commit -am "${NEXT_VERSION}"
 git checkout master
