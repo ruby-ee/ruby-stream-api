@@ -26,7 +26,7 @@ puts collected # [3, 4, 5]
 
 More info and examples soon.
 
-## Not a Mixin!
+## Not a Mixin
 
 This is **not** a Mixin! The Stream is a proper object wrapping your collection(s). Furthermore, each object in this gem is immutable and therefore thread-safe -> the **intermediate** operations are not altering the instance on which they are called; instead, they create a new instance of the Stream with a modified version of the underlying collection.
 
