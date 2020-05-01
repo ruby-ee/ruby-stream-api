@@ -10,3 +10,5 @@ branches:
 script:
   - bundle install
   - bundler exec rake
+after_success:
+  - "bash <(curl -s https://codecov.io/bash)"
