@@ -45,8 +45,6 @@ To require it inside your Ruby program do:
 require 'stream'
 ```
 
-The latest version is `0.0.1`
-
 ## Not a Mixin
 
 This is **not** a Mixin! The Stream is a proper object wrapping your collection(s). Furthermore, each object in this gem is immutable and therefore thread-safe -> the **intermediate** operations are not altering the instance on which they are called; instead, they create a new instance of the Stream with a modified version of the underlying collection.
