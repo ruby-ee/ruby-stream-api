@@ -66,10 +66,26 @@ module Stream
       stream = FromArray.new([1, 2, 3])
       begin
         stream.skip(-1)
+        assert(false, 'Exception was expected!')
       rescue ArgumentError => e
         assert(
-          e.message == 'count has to be positive',
+          e.message == 'count has to be positive integer',
           'Unexpected ArgumentError message!'
+        )
+      end
+    end
+
+    # FromArray raises ArgumentError if the given count to skip
+    # is positive but not an integer.
+    def test_skip_argument_error_count_not_integer
+      stream = FromArray.new([1, 2, 3])
+      begin
+        stream.skip(2.23)
+        assert(false, 'Exception was expected!')
+      rescue ArgumentError => e
+        assert(
+            e.message == 'count has to be positive integer',
+            'Unexpected ArgumentError message!'
         )
       end
     end

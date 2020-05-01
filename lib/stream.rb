@@ -41,12 +41,10 @@ module Stream
   # Since this would be an infinite Stream, a limit has to be applied.
   # If no limit is specified, the default is 100 elements.
   def self.generate(limit = 100, &seed)
-    raise ArgumentError, 'limit has to be positive' unless limit.positive?
+    raise ArgumentError, 'limit has to be a positive integer' unless limit.positive? and limit.is_a? Integer
 
     elements = []
-    limit.times do
-      elements.push(seed.call)
-    end
+    limit.times { elements.push(seed.call) }
     FromArray.new(elements)
   end
 end

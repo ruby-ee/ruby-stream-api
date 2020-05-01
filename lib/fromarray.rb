@@ -73,7 +73,7 @@ module Stream
     # Skip the first n elements of the stream.
     # +count+:: Number of elements to skip from the beginning of the stream.
     def skip(count)
-      raise ArgumentError, 'count has to be positive' unless count.positive?
+      raise ArgumentError, 'count has to be positive integer' unless count.positive? and count.is_a? Integer
 
       skipped = []
       @array.each_with_index do |val, index|

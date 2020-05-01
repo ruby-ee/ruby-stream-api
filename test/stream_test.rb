@@ -30,5 +30,49 @@ module Stream
     def test_that_from_array_works
       refute_nil Stream.from_array([1, 2, 3])
     end
+
+    # A Stream can be generated with the default limit of 100.
+    def test_generates_hundred_elements
+      assert(
+        Stream.generate { 1 }.count == 100,
+        'Default size of a generated Stream should be 100'
+      )
+    end
+
+    # A Stream can be generated with a specified limit.
+    def test_generates_with_limit
+      assert(
+        Stream.generate(15) { 1 }.count == 15,
+        'Default size of a generated Stream should be 100'
+      )
+    end
+
+    # Stream.generate should throw an exception if the given limit is
+    # not a positive integer.
+    def test_generates_with_negative_limit
+      begin
+        Stream.generate(-1) { 1 }
+        assert(false, 'Exception was expected!')
+      rescue ArgumentError => e
+        assert(
+          e.message == 'limit has to be a positive integer',
+          'Unexpected ArgumentError message!'
+        )
+      end
+    end
+
+    # Stream.generate should throw an exception if the given limit is not
+    # a positive integer.
+    def test_generates_with_rational_limit
+      begin
+        Stream.generate(2.23) { 1 }
+        assert(false, 'Exception was expected!')
+      rescue ArgumentError => e
+        assert(
+          e.message == 'limit has to be a positive integer',
+          'Unexpected ArgumentError message!'
+        )
+      end
+    end
   end
 end
