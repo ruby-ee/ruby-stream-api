@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ruby-stream-api (0.1.0)
+    ruby-stream-api (0.0.1)
 
 GEM
   remote: https://rubygems.org/
