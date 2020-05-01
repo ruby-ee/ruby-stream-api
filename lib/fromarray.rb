@@ -53,6 +53,23 @@ module Stream
       FromArray.new(filtered)
     end
 
+    # Map the stream's elements to a given value using a function.
+    # Example (map int to string):
+    #
+    # stream = Stream::FromArray.new([1, 2, 3])
+    # collected = stream.map {|num| num.to_s}.collect
+    # puts collected # ['1', '2', '3']
+    #
+    # +function+:: Ruby Block function taking one parameter
+    #              (the element in the stream).
+    def map(&function)
+      mapped = []
+      @array.each do |val|
+        mapped.push(function.call(val))
+      end
+      FromArray.new(mapped)
+    end
+
     # Skip the first n elements of the stream.
     # +count+:: Number of elements to skip from the beginning of the stream.
     def skip(count)

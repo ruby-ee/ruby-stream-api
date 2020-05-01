@@ -128,7 +128,7 @@ module Stream
     # condition.
     def test_filter_elements
       stream = FromArray.new([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-      collected = stream.filter {|num| num % 2 == 0}.collect
+      collected = stream.filter { |num| num % 2 == 0 }.collect
       collected.each do |val|
         assert(val.even?)
       end
@@ -138,7 +138,7 @@ module Stream
     # the condition.
     def test_filters_no_elements
       stream = FromArray.new([2, 4, 6, 8])
-      collected = stream.filter {|num| num % 2 == 0}.collect
+      collected = stream.filter { |num| num % 2 == 0 }.collect
       assert(stream.collect == collected)
     end
 
@@ -146,7 +146,7 @@ module Stream
     # the condition.
     def test_filters_all_elements
       stream = FromArray.new([2, 4, 6, 8])
-      assert(stream.filter {|num| num % 2 != 0}.count == 0)
+      assert(stream.filter { |num| num % 2 != 0 }.count == 0)
     end
 
     # Filtering a stream should return a new instance rather than modifying
@@ -155,6 +155,31 @@ module Stream
       stream = FromArray.new([2, 4, 6, 8])
       assert(!stream.filter(&:odd?).equal?(stream))
       assert(stream.collect == [2, 4, 6, 8])
+    end
+
+    # FromArray can map its elements using a given function.
+    def test_map_elements
+      stream = FromArray.new([1, 2, 3])
+      strings = stream.map { |num| num.to_s }.collect
+      strings.each do |val|
+        assert(val.is_a?(String))
+      end
+    end
+
+    # FromArray can map its single element.
+    def test_maps_one_element
+      stream = FromArray.new([1])
+      strings = stream.map { |num| num.to_s }.collect
+      strings.each do |val|
+        assert(val.is_a?(String))
+      end
+    end
+
+    # FromArray.map works when the stream is empty.
+    def test_maps_no_elements
+      stream = FromArray.new([])
+      collected = stream.map { |val| val.to_s }.collect
+      assert(collected.empty?)
     end
   end
 end
