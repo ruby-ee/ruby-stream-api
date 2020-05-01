@@ -16,12 +16,13 @@ operations to modify and/or get information about the collection. The operations
 First glance (finite Stream from an array):
 
 ```ruby
-array = [1, 2, 3, 4, 5]
+array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 stream = Stream::FromArray.new(array)
 collected = stream
+    .filter { |num| num % 2 == 0 }
     .skip(2)
     .collect
-puts collected # [3, 4, 5]
+puts collected # [6, 8, 10]
 ```
 
 More examples soon.
