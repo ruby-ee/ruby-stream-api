@@ -16,16 +16,34 @@ operations to modify and/or get information about the collection. The operations
 First glance (finite Stream from an array):
 
 ```ruby
-array = [1, 2, 2, 2, 3, 3, 4, 5]
-stream = Stream::FromArray(array)
+array = [1, 2, 3, 4, 5]
+stream = Stream::FromArray.new(array)
 collected = stream
-    .distinct()
     .skip(2)
     .collect
 puts collected # [3, 4, 5]
 ```
 
-More info and examples soon.
+More examples soon.
+
+## Installation
+
+Add this line to your application's Gemfile:
+```ruby
+gem 'ruby-stream-api'
+```
+
+Or install it as a separate gem:
+```bash
+$gem install ruby-stream-api
+```
+
+To require it inside your Ruby program do:
+```ruby
+require 'stream'
+```
+
+The latest version is `0.0.1`
 
 ## Not a Mixin
 
