@@ -1,5 +1,6 @@
 # Ruby Stream API
 
+[![Gem Version](https://badge.fury.io/rb/ruby-stream-api.svg)](https://badge.fury.io/rb/ruby-stream-api)
 [![Build Status](https://travis-ci.org/ruby-ee/ruby-stream-api.svg?branch=master)](https://travis-ci.org/ruby-ee/ruby-stream-api)
 [![Test Coverage](https://img.shields.io/codecov/c/github/ruby-ee/ruby-stream-api.svg)](https://codecov.io/github/ruby-ee/ruby-stream-api?branch=master)
 
