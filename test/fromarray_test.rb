@@ -197,5 +197,37 @@ module Stream
       collected = stream.map { |val| val.to_s }.collect
       assert(collected.empty?)
     end
+
+    # FromArray.distinct removes all duplicates.
+    def test_removes_duplicates
+      stream = FromArray.new([2, 2, 3, 4, 1, 1, 2, 5, 4, 3, 6])
+      collected = stream.distinct.collect
+      assert(collected == collected.uniq)
+      assert(collected.length == collected.uniq.length)
+    end
+
+    # FromArray.distinct works when the stream is empty.
+    def test_empty_distinct
+      stream = FromArray.new([])
+      collected = stream.distinct.collect
+      assert(collected.length.zero?)
+    end
+
+    # FromArray.distinct works when there are no duplicates in the array.
+    def test_distinct_no_duplicates
+      stream = FromArray.new([1, 2, 3, 4, 5])
+      collected = stream.distinct.collect
+      assert(collected == collected.uniq)
+      assert(collected.length == collected.uniq.length)
+    end
+
+    # FromArray.distinct works when there is only 1 element with
+    # its duplicate
+    def test_distinct_one_duplicate_element
+      stream = FromArray.new([1, 1])
+      collected = stream.distinct.collect
+      assert(collected.length == 1)
+      assert(collected == collected.uniq)
+    end
   end
 end

@@ -70,6 +70,15 @@ module Stream
       FromArray.new(mapped)
     end
 
+    # Remove all the duplicates from the stream.
+    def distinct
+      unique = []
+      @array.each do |val|
+        unique.push(val) unless unique.include? val
+      end
+      FromArray.new(unique)
+    end
+
     # Skip the first n elements of the stream.
     # +count+:: Number of elements to skip from the beginning of the stream.
     def skip(count)
