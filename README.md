@@ -14,7 +14,9 @@ operations to modify and/or get information about the collection. The operations
 * **Intermediate** operations (skip, filter, map etc) -- operations which are altering the Stream and still leave it open for further modifications.
 * **Terminal** operations (count, collect etc) -- operations which are executed after all the modifications have been done and are returning a finite result.
 
-First glance (finite Stream from an array):
+First glance: 
+
+1) **Finite** Stream from an array:
 
 ```ruby
 array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -26,7 +28,17 @@ collected = stream
 puts collected # [6, 8, 10]
 ```
 
-More examples soon.
+2) Generate a (potentially) **infinite** stream:
+
+```ruby
+stream = Stream.generate(150) { &seed }
+```
+
+The ``generate`` method takes a ``limit`` (max number of elements) and a ``&seed`` Block function which
+returns a new element at each ``seed.call``. A limit is necessary as, without it, this Stream would be infinite.
+If no limit is specified, the default is ``100`` elements.
+
+This mechanism is useful, for instance, when you have to consume an incomming stream of objects from some ``IO`` objects.
 
 ## Installation
 
