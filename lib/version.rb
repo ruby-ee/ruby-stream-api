@@ -23,5 +23,5 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Stream
-  VERSION = '0.0.2-SNAPSHOT'.freeze # rultor
+  VERSION = '0.0.3-SNAPSHOT'.freeze # rultor
 end
