@@ -33,6 +33,7 @@ module Stream
   end
 
   # Build a stream from an array.
+  # Since:: 0.0.1
   def self.from_array(array)
     FromArray.new(array)
   end
@@ -40,6 +41,7 @@ module Stream
   # Generate a Stream based on a seed function.
   # Since this would be an infinite Stream, a limit has to be applied.
   # If no limit is specified, the default is 100 elements.
+  # Since:: 0.0.1
   def self.generate(limit = 100, &seed)
     raise ArgumentError, 'limit has to be a positive integer' unless limit.positive? and limit.is_a? Integer
 

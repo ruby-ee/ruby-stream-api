@@ -34,6 +34,7 @@ module Stream
 
     # Return the number of elements in this stream.
     # This is a terminal operation.
+    # Since:: 0.0.1
     def count
       @array.length
     end
@@ -48,6 +49,7 @@ module Stream
     # This is an intermediary operation.
     # +condition+:: Ruby Block taking one parameter (the stream element) and
     #               returning a boolean check on it.
+    # Since:: 0.0.1
     def filter(&condition)
       filtered = []
       @array.each do |val|
@@ -66,6 +68,7 @@ module Stream
     # This is an intermediary operation.
     # +function+:: Ruby Block function taking one parameter
     #              (the element in the stream).
+    # Since:: 0.0.1
     def map(&function)
       mapped = []
       @array.each do |val|
@@ -76,6 +79,7 @@ module Stream
 
     # Remove all the duplicates from the stream.
     # This is an intermediary operation.
+    # Since:: 0.0.2
     def distinct
       unique = []
       @array.each do |val|
@@ -87,6 +91,7 @@ module Stream
     # Skip the first n elements of the stream.
     # This is an intermediary operation.
     # +count+:: Number of elements to skip from the beginning of the stream.
+    # Since:: 0.0.1
     def skip(count)
       raise ArgumentError, 'count has to be positive integer' unless count.positive? and count.is_a? Integer
 
@@ -105,8 +110,9 @@ module Stream
     # is not called at all.
     #
     # This is a terminal operation.
-    # +test+:: A function which should perform some boolean test on the
-    #  given value.
+    #
+    # +test+:: A function which should perform some boolean test on the value.
+    # Since:: 0.0.2
     def all_match(&test)
       @array.each do |val|
         return false unless test.call(val)
@@ -124,7 +130,8 @@ module Stream
     # This is a terminal operation.
     #
     # +test+:: A function which should perform some boolean test on the
-    #  given value.
+    #          given value.
+    # Since:: 0.0.2
     def any_match(&test)
       @array.each do |val|
         return true if test.call(val)
@@ -134,6 +141,7 @@ module Stream
 
     # Collect the stream's data into an array and return it.
     # This is a terminal operation.
+    # Since:: 0.0.1
     def collect
       @array.dup
     end
