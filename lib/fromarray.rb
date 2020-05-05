@@ -101,7 +101,8 @@ module Stream
     # given predicate (a function which performs a test on the value and
     # should return a boolean).
     #
-    # If the stream is empty, the returned value is true.
+    # If the stream is empty, the returned value is true and the predicate
+    # is not called at all.
     #
     # This is a terminal operation.
     # +test+:: A function which should perform some boolean test on the
@@ -111,6 +112,24 @@ module Stream
         return false unless test.call(val)
       end
       true
+    end
+
+    # Returns true if any of the elements of the Stream are matching
+    # the given predicate (a function which performs a test on the value and
+    # should return a boolean). Iteration will stop at the first match.
+    #
+    # If the stream is empty, the returned value is false and the predicate
+    # is not called at all.
+    #
+    # This is a terminal operation.
+    #
+    # +test+:: A function which should perform some boolean test on the
+    #  given value.
+    def any_match(&test)
+      @array.each do |val|
+        return true if test.call(val)
+      end
+      false
     end
 
     # Collect the stream's data into an array and return it.

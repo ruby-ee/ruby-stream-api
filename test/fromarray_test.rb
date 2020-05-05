@@ -258,5 +258,33 @@ module Stream
         'Expected false because not all elements are a match!'
       )
     end
+
+    # FromArray.any_match returns true if one element matches.
+    def test_any_element_matches
+      stream = FromArray.new([2, 4, 6, 8])
+      assert(
+        stream.any_match { |val| val == 4 },
+        'Stream contains element 4, it should match!'
+      )
+    end
+
+    # FromArray.any_match returns true if all elements match.
+    def test_any_match_all
+      stream = FromArray.new([2, 4, 6, 8])
+      assert(
+        stream.any_match { |val| val %2 == 0 },
+        'All elements are even, it should match!'
+      )
+    end
+
+    # FromArray.any_match returns false and the predicate is never called,
+    # because the stream is empty.
+    def test_any_match_empty
+      stream = FromArray.new([])
+      assert(
+        !stream.any_match { raise ScriptError, 'Should not be called' },
+        'Stream is empty, any_match should be false!'
+      )
+    end
   end
 end
