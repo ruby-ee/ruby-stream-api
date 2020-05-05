@@ -26,6 +26,7 @@ module Stream
   # A stream implemented based on an Array.
   # This class is immutable and thread-safe.
   # Author:: Mihai Andronache (amihaiemil@gmail.com)
+  # Since:: 0.0.1
   class FromArray
     def initialize(array)
       @array = array
@@ -94,6 +95,22 @@ module Stream
         skipped.push(val) unless index + 1 <= count
       end
       FromArray.new(skipped)
+    end
+
+    # Returns true if all the elements of the Stream are matching the
+    # given predicate (a function which performs a test on the value and
+    # should return a boolean).
+    #
+    # If the stream is empty, the returned value is true.
+    #
+    # This is a terminal operation.
+    # +test+:: A function which should perform some boolean test on the
+    #  given value.
+    def all_match(&test)
+      @array.each do |val|
+        return false unless test.call(val)
+      end
+      true
     end
 
     # Collect the stream's data into an array and return it.

@@ -229,5 +229,34 @@ module Stream
       assert(collected.length == 1)
       assert(collected == collected.uniq)
     end
+
+    # FromArray.all_match returns true when all
+    # elements are a match.
+    def test_all_elements_match
+      stream = FromArray.new([2, 4, 6, 8])
+      assert(
+        stream.all_match { |val| val % 2 == 0 },
+        'All of the stream\'s elements should be even!'
+      )
+    end
+
+    # FromArray.all_match should return true if the stream is empty.
+    def test_all_match_no_elements
+      stream = FromArray.new([])
+      assert(
+        stream.all_match { |val| val % 2 == 1 },
+        'Expected true because the stream is empty!'
+      )
+    end
+
+    # FromArray.all_match returns false because not all the
+    # elements are a match
+    def test_not_all_elements_match
+      stream = FromArray.new([2, 4, 5, 6, 8])
+      assert(
+        stream.all_match { |val| val % 2 == 0 } == false,
+        'Expected false because not all elements are a match!'
+      )
+    end
   end
 end
