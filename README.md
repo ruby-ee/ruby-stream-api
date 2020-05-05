@@ -40,6 +40,8 @@ If no limit is specified, the default is ``100`` elements.
 
 This mechanism is useful, for instance, when you have to consume an incomming stream of objects from some ``IO`` objects.
 
+More info and methods' overview, in the [Wiki](https://github.com/ruby-ee/ruby-stream-api/wiki).
+
 ## Installation
 
 Add this line to your application's Gemfile:
