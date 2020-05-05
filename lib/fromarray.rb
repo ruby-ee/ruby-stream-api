@@ -32,6 +32,7 @@ module Stream
     end
 
     # Return the number of elements in this stream.
+    # This is a terminal operation.
     def count
       @array.length
     end
@@ -43,6 +44,7 @@ module Stream
     # collected = stream.filter {|num| num % 2 == 0}.collect
     # puts collected # [2, 4]
     #
+    # This is an intermediary operation.
     # +condition+:: Ruby Block taking one parameter (the stream element) and
     #               returning a boolean check on it.
     def filter(&condition)
@@ -60,6 +62,7 @@ module Stream
     # collected = stream.map {|num| num.to_s}.collect
     # puts collected # ['1', '2', '3']
     #
+    # This is an intermediary operation.
     # +function+:: Ruby Block function taking one parameter
     #              (the element in the stream).
     def map(&function)
@@ -71,6 +74,7 @@ module Stream
     end
 
     # Remove all the duplicates from the stream.
+    # This is an intermediary operation.
     def distinct
       unique = []
       @array.each do |val|
@@ -80,6 +84,7 @@ module Stream
     end
 
     # Skip the first n elements of the stream.
+    # This is an intermediary operation.
     # +count+:: Number of elements to skip from the beginning of the stream.
     def skip(count)
       raise ArgumentError, 'count has to be positive integer' unless count.positive? and count.is_a? Integer
@@ -92,6 +97,7 @@ module Stream
     end
 
     # Collect the stream's data into an array and return it.
+    # This is a terminal operation.
     def collect
       @array.dup
     end
